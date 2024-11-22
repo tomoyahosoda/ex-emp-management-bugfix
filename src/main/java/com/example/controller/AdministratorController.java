@@ -79,11 +79,16 @@ public class AdministratorController {
 		if (result.hasErrors()) {
 			return "administrator/insert";
 		}
+		if (!(administratorService.isMatchPassword(form.getPassword(), form.getCheckPassword()))) {
+			model.addAttribute("message", "パスワードと確認用パスワードが一致していません");
+			return "administrator/insert";
+		}
 		Administrator administrator = administratorService.searchByMailAddress(form.getMailAddress());
 		if (administrator != null) {
 			model.addAttribute("message", "入力されたメールアドレスは既に登録されています");
 			return "administrator/insert";
 		}
+		administrator = new Administrator();
 		// フォームからドメインにプロパティ値をコピー
 		BeanUtils.copyProperties(form, administrator);
 		administratorService.insert(administrator);
