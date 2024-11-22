@@ -54,6 +54,7 @@
                 </legend>
                 <!-- 氏名 -->
                 <div class="form-group">
+                  <p th:if="${message}" th:text="${message}" class="error-messages"></p>
                   <div class="row">
                     <div class="col-sm-12">
                       <label for="name"> 氏名: </label>
