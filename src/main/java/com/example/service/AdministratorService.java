@@ -51,19 +51,4 @@ public class AdministratorService {
 		Administrator administrator = administratorRepository.findByMailAddress(mailAddress);
 		return administrator;
 	}
-
-	/**
-	 * パスワードと確認用パスワードが一致しているかどうかを確認します.
-	 * 
-	 * @param password1 パスワード
-	 * @param password2 確認用パスワード
-	 * @return マッチしているかどうか
-	 */
-	public boolean isMatchPassword(String password1, String password2) {
-		if (password1.equals(password2)) {
-			return true;
-		} else {
-			return false;
-		}
-	}
 }

@@ -79,7 +79,7 @@ public class AdministratorController {
 		if (result.hasErrors()) {
 			return "administrator/insert";
 		}
-		if (!(administratorService.isMatchPassword(form.getPassword(), form.getCheckPassword()))) {
+		if (!(form.getPassword().equals(form.getCheckPassword()))) {
 			model.addAttribute("message", "パスワードと確認用パスワードが一致していません");
 			return "administrator/insert";
 		}
