@@ -117,7 +117,7 @@ public class EmployeeController {
 	@PostMapping("/find_name")
 	public String findName(String name, Model model) {
 		List<Employee> employeeList = new ArrayList<>();
-		if (name.isEmpty()) {
+		if (name.isEmpty() || name == null) {
 			employeeList = employeeService.showList();
 		} else {
 			employeeList = employeeService.findByName(name);
