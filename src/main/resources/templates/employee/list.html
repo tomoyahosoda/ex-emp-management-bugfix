@@ -97,6 +97,7 @@
         <!-- ここから上を編集する必要はありません -->
 
          <!-- 従業員名で検索 -->
+          <span th:if="${message}" th:text="${message}"></span>
           <form th:action="@{/employee/find_name}" method="post">
             従業員名:<input type="text" name="name">
             <button>検索</button>
