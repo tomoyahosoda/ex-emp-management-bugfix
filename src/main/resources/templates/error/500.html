@@ -4,7 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>システムエラーが発生しました</title>
+    <link rel="stylesheet" href="../../static/css/bootstrap.css" th:href="@{/css/bootstrap.css}">
+    <link rel="stylesheet" href="../../static/css/style.css" th:href="@{/css/style.css}">
 </head>
 
 <body>
@@ -15,8 +17,9 @@
     ・長い時間操作を行わなかった
     ・現在システムメンテナンス中
 
-    しばらく経ってからもう一度操作してください。
+    以下のリンクから再度ログインをお願いします。
     </pre>
+    <a th:href="@{/}">ログイン画面へ移動</a>
 </body>
 
 </html>
