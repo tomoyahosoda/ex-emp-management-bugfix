@@ -1,5 +1,6 @@
 package com.example.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -104,5 +105,30 @@ public class EmployeeController {
 		employee.setDependentsCount(form.getIntDependentsCount());
 		employeeService.update(employee);
 		return "redirect:/employee/showList";
+	}
+
+	/**
+	 * 従業員一覧を名前で検索します.
+	 * 
+	 * @param name 名前
+	 * @param model requestスコープ
+	 * @return 従業員一覧画面へフォワード
+	 */
+	@PostMapping("/find_name")
+	public String findName(String name, Model model) {
+		List<Employee> employeeList = new ArrayList<>();
+		if (name.isEmpty() || name == null) {
+			employeeList = employeeService.showList();
+		} else {
+			employeeList = employeeService.findByName(name);
+			if (employeeList.size() == 0) {
+				employeeList = employeeService.showList();
+				model.addAttribute(("message"), "1件もありませんでした");
+			}
+		}
+
+		model.addAttribute("employeeList", employeeList);
+
+		return "employee/list";
 	}
 }
