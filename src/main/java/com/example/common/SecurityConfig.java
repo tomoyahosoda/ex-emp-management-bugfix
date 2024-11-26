@@ -21,13 +21,13 @@ public class SecurityConfig {
                 .loginProcessingUrl("/login")
                 .loginPage("/")
                 .defaultSuccessUrl("/employee/showList")
-                .failureUrl("/")
+                .failureUrl("/?result=error")
                 .usernameParameter("mailAddress")
                 .passwordParameter("password")
                 .permitAll()).logout(logout -> logout
                         .logoutSuccessUrl("/"))
                 .authorizeHttpRequests(authz -> authz
-                        .requestMatchers("/", "/toInsert", "/insert", "/employee/list", "/employee/detail", "/css/**",
+                        .requestMatchers("/", "/toInsert", "/insert", "/css/**",
                                 "/img/**", "/js/**")
                         .permitAll()
                         .anyRequest().authenticated());
