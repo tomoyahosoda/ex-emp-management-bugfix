@@ -109,7 +109,10 @@ public class AdministratorController {
 	 * @return ログイン画面
 	 */
 	@GetMapping("/")
-	public String toLogin() {
+	public String toLogin(String result, Model model) {
+		if ("error".equals(result)) {
+			model.addAttribute("message", "メールアドレスかパスワードが正しくありません");
+		}
 		return "administrator/login";
 	}
 
