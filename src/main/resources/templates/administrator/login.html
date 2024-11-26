@@ -35,8 +35,7 @@
             <fieldset>
               <legend>ログイン</legend>
               <div class="form-group">
-                <p th:if="${session['SPRING_SECURITY_LAST_EXCEPTION']}" th:text="メールアドレスかパスワードが正しくありません"
-                  class="alert alert-danger"></p>
+                <p th:if="${message}" th:text="${message}" class="alert alert-danger"></p>
               </div>
               <div class="form-group">
                 <label for="mailAddress">メールアドレス:</label>
